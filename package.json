@@ -1,0 +1,22 @@
+{
+  "name": "whiteboard-teacher-video-deps",
+  "version": "0.7.2",
+  "private": true,
+  "description": "Minimal runtime deps for whiteboard-teacher-video. Only what the engine needs to render — no electron, no studio, no UI.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "dependencies": {
+    "@fontsource/caveat": "5.3.0",
+    "@fontsource/fredoka": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "ffmpeg-static": "5.3.0",
+    "katex": "0.18.9",
+    "lxgw-wenkai-webfont": "1.7.0",
+    "playwright-core": "1.61.1",
+    "roughjs": "4.6.6",
+    "simple-icons": "16.33.0",
+    "@iconify-json/logos": "1.2.15"
+  }
+}

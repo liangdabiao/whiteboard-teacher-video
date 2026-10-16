@@ -1,0 +1,25 @@
+# 引擎（setup 时从 GitHub 拉取，不进 skill 包）
+# 约 16MB / 38 万个文件（three.js 展开），打进来会让分发极重。
+# 见 vendor/ATTRIBUTION.md
+engine/
+.engine-fetch/
+
+# 依赖（setup 时 npm install，约 130MB）
+node_modules/
+
+# 视频项目产物（ftnew.py 建的项目通常放在别处，但兜底）
+out/
+audio/
+*.mp4
+*.srt
+
+# Python
+__pycache__/
+*.pyc
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+# 本地工作区数据（不公开）
+.workbuddy/
