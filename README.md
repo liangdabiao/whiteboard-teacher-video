@@ -4,6 +4,8 @@
 
 图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪。五套风格可选，本地 Chrome 渲染，**零生图 API 成本**，任何改动秒级重渲。
 
+B站效果：https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
+
 ---
 
 ## 它和普通 AI 生视频工具的区别
@@ -131,6 +133,8 @@ python scripts/ftrender.py D:/films/relativity --fps 24 --skip-subs
 ### 3. 看一个真实成品
 
 《总统的证明：一块梯形证出勾股定理》—— **103.5 秒 / 8 页 / 黑板粉笔风**，讲加尔菲尔德 1876 年的那个证明。
+
+https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
 
 它的价值在于示范了**一条贯穿全片的意象**（那块梯形）怎么用：
 
@@ -372,3 +376,7 @@ P.liveRough((lt, rough) => [rough.box(x, y, w, h, { color: 'ink' })]);  // ✓
 - 不自动配乐（`page.sfx` 能做，但要自己准备音频文件）
 - 逐句合成配音 → 整页语调略不连贯（要连贯需用火山/ElevenLabs 的字级时间戳方案）
 - 建议 ≤ 12 页（每页都要写代码）
+
+## 特别致谢
+
+https://linux.do 社区支持
