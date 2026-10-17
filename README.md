@@ -6,7 +6,7 @@
 
 B站效果：https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
 
-安装方法，直接给链接给你的ai就可以。 本项目不需要依赖其他api，但是因为edge-tts语音最近被封了，所以建议安装 https://apiz.ai 的 apiz-cli 作为语音生成替代！
+安装方法，直接给链接给你的ai就可以。 本项目不需要依赖其他api，但是因为edge-tts语音最近被封了，所以建议安装 https://apiz.ai 的 apiz-cli 作为语音生成替代！ 当然，你有其他语音api直接告诉AI就可以替代！
 
 ---
 
