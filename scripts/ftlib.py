@@ -231,9 +231,14 @@ def parse_script(js_path: Path) -> dict:
         cues = []
         if cm:
             # 只取字符串与 { t: '...' } 两种形态
-            for c in re.finditer(r"\{\s*t:\s*'([^']*)'[^}]*\}|'([^']*)'", cm.group(1)):
-                text = c.group(1) or c.group(2)
-                if text.strip():
+            # cue 既可能是 '...'，也可能是 JSON.stringify 生成的 "..."；
+            # 生成式批量脚本通常用后者，所以两种都要认。
+            cue_re = (r"\{\s*t:\s*'([^']*)'[^}]*\}"
+                      r"|\{\s*t:\s*\"([^\"]*)\"[^}]*\}"
+                      r"|'([^']*)'|\"([^\"]*)\"")
+            for c in re.finditer(cue_re, cm.group(1)):
+                text = c.group(1) or c.group(2) or c.group(3) or c.group(4)
+                if text and text.strip():
                     cues.append(text)
         sect = re.search(r"section:\s*'([^']*)'", rest)
         pages.append({"id": pid, "section": sect.group(1) if sect else "", "cues": cues})

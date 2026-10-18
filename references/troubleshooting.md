@@ -179,8 +179,22 @@ python scripts/ftvoice.py <项目> --backend apiz --probe
 | `voice id not exist` | 传了中文显示名 | 传 `voice_id`（`female-chengshu`）或预设名 `mature` |
 | `找不到 apiz 命令` | 不在 PATH | 见 `tts-backends.md` |
 | `429` / `余额不足` | 账户没钱 | `apiz account balance` |
-| `WSServerHandshakeError 403` | edge-tts 被微软封 | 换 `--backend apiz` |
+| `WSServerHandshakeError 403` | edge 旧域名被拒 | 用 `--backend edge`（helper 走新域名），或换 `--backend apiz` |
 | `合成失败或产出为空` | 文本含控制字符 | 去掉换行符、控制符 |
+
+### edge-tts 403
+
+先确认你走的是 helper，不是旧 CLI：
+
+```bash
+python scripts/ftvoice.py <项目> --backend edge --probe
+```
+
+- 新域名 `api.msedgeservices.com` 可用，helper 会自动带上
+  `Ocp-Apim-Subscription-Key`；旧域名只作为回退。
+- 如果探针报 `ModuleNotFoundError`：`python -m pip install edge-tts`。
+- 如果两个域名都 403：当前网络不通，换 `--backend apiz`。
+- 不要用 `edge-tts` 命令行测，它的 7.2.8 仍写死旧域名。
 
 ### 配音和画面对不上
 
@@ -275,7 +289,7 @@ python scripts/ftvoice.py <项目> --backend apiz --probe
 |---|---|---|
 | `找不到 apiz 命令` | 不在 PATH | 见 `tts-backends.md` |
 | `429` / `余额不足` | 账户没钱 | `apiz account balance` 看余额 |
-| `WSServerHandshakeError 403` | edge-tts 被微软封 | 换 `--backend apiz` |
+| `WSServerHandshakeError 403` | edge 旧域名被拒 | 用 `--backend edge`（helper 走新域名），或换 `--backend apiz` |
 | `合成失败或产出为空` | 文本含特殊字符 | 去掉换行符、控制符 |
 | `读不出音频时长` | 文件损坏 | 删掉对应 wav 重跑（缓存会重新合成） |
 

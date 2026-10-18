@@ -42,6 +42,18 @@ description: 图文讲解视频 skill：把知识讲解/科普/推导做成「�
 
 **第 ② 步不可跳过。** 分镜错了，后面画得再好看也是一份幻灯片。原项目把这条做成 promise 闸门是有原因的。
 
+### 配音后端
+
+默认 `apiz`；想零成本就用 `edge`：
+
+```bash
+python scripts/ftvoice.py <项目> --backend edge --voice mature --speed 1.15
+```
+
+edge 的旧域名（`speech.platform.bing.com`）在 2026 年起很多地区 403；
+`scripts/edge_tts_speak.py` 已自动改走 `api.msedgeservices.com`，失败再回退旧域名。
+不需要 `edge-tts` CLI。先跑 `--probe`，细节见 `references/tts-backends.md`。
+
 ### ★★ 第 ⑩ 步同样重要：先出片，再打磨
 
 **用户要的是视频，不是完美的视频。** 交付节奏比成品精度更重要。
@@ -156,7 +168,7 @@ P.liveRough((lt, rough) => [rough.box(x, y, w, h, { color: 'ink' })]);  // ✓
 | 定分镜 / 写口播 | `references/storyboard-method.md`（五段式 + 禁忌） |
 | 选风格 / 拿不准配色 | `references/style-packs.md`（五套风格 + 语法卡摘要） |
 | `script.js` 字段不清 | `references/script-format.md` |
-| 配音报错 / 想换 TTS | `references/tts-backends.md`（含 edge-tts 已被封的说明） |
+| 配音报错 / 想换 TTS | `references/tts-backends.md`（edge 已改走新域名，含回退说明） |
 | 看不懂引擎报错 | `references/troubleshooting.md`（按症状索引） |
 
 ## 首次使用

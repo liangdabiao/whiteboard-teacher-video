@@ -50,15 +50,34 @@ APIZ_VOICES = {
     "default": "female-chengshu",
 }
 
+# edge 的语音 id 与 apiz 完全不同；预设名在 edge 下映射到对应的微软音色。
+# 2026-10 起 speech.platform.bing.com 在部分地区 403，scripts/edge_tts_speak.py
+# 改走 api.msedgeservices.com（同一个服务，同一套 token）。
+EDGE_HELPER = SKILL / "scripts" / "edge_tts_speak.py"
+EDGE_VOICES = {
+    "mature": "zh-CN-XiaoxiaoNeural",
+    "girl": "zh-CN-XiaoyiNeural",
+    "yujie": "zh-CN-XiaoyiNeural",
+    "youth": "zh-CN-YunxiNeural",
+    "sweet": "zh-CN-XiaoxiaoNeural",
+    "default": "zh-CN-XiaoxiaoNeural",
+}
+
 
 # ── 后端适配器 ────────────────────────────────────────────────────
 
 def resolve_voice(backend: str, voice: str | None) -> str:
     """把预设名解析成真实音色 id。
 
-    实测坑：apiz 的 --voice 只认 voice_id（如 female-chengshu），
-    传中文显示名（成熟女性音色）会报 "voice id not exist"。
+    apiz 只认 voice_id（female-chengshu）；edge 只认微软音色 id
+    （zh-CN-XiaoxiaoNeural）。两套 id 不通用，所以预设名按后端分别映射。
     """
+    if backend == "edge":
+        if voice and voice in EDGE_VOICES:
+            return EDGE_VOICES[voice]
+        if voice and voice in APIZ_VOICES:
+            return EDGE_VOICES.get(voice, EDGE_VOICES["default"])
+        return voice or EDGE_VOICES["default"]
     if voice and voice in APIZ_VOICES:
         return APIZ_VOICES[voice]
     return voice or APIZ_VOICES["default"]
@@ -69,7 +88,9 @@ def probe_backend(backend: str, voice: str) -> None:
 
     实测：edge-tts 已被微软 403 全域封锁（WSServerHandshakeError）。
     """
-    tmp = Path(os.environ.get("TEMP", "/tmp")) / "fttts-probe.mp3"
+    # 每个进程用独立的探针文件：并发跑多集时共用 fttts-probe.mp3 会互相删文件，
+    # 触发 WinError 32（另一个进程正在使用）。
+    tmp = Path(os.environ.get("TEMP", "/tmp")) / f"fttts-probe-{os.getpid()}.mp3"
     try:
         if backend == "apiz":
             if not shutil.which("apiz"):
@@ -77,8 +98,9 @@ def probe_backend(backend: str, voice: str) -> None:
             run(["apiz", "speak", "测试", "--model", "speech-2.6-turbo",
                  "--voice", voice, "--output-file", win(tmp)], timeout=90)
         elif backend == "edge":
-            exe = shutil.which("edge-tts") or "edge-tts"
-            run([exe, "--voice", voice, "--text", "测试", "--write-media", win(tmp)], timeout=60)
+            run([sys.executable, str(EDGE_HELPER), "--text", "测试", "--voice", voice,
+                 "--rate", "+0%", "--out", win(tmp.with_suffix(".mp3"))], timeout=90)
+            tmp = tmp.with_suffix(".mp3")
         elif backend == "user":
             return
         if not tmp.exists() or tmp.stat().st_size < 1024:
@@ -93,8 +115,10 @@ def probe_backend(backend: str, voice: str) -> None:
             f"  说明见 {SKILL / 'references' / 'tts-backends.md'}"
         ) from e
     finally:
-        if tmp.exists():
+        try:
             tmp.unlink(missing_ok=True)
+        except OSError:
+            pass
 
 
 def synth_one(backend: str, text: str, voice: str, speed: float, out_mp3: Path) -> Path:
@@ -104,12 +128,11 @@ def synth_one(backend: str, text: str, voice: str, speed: float, out_mp3: Path) 
              "--voice", voice, "--speed", str(speed), "--output-file", win(out_mp3)],
             timeout=180)
     elif backend == "edge":
-        # edge-tts 的语速用 rate 百分比，不是倍数
-        exe = shutil.which("edge-tts") or "edge-tts"
+        # edge 的语速用 rate 百分比，不是倍数；helper 会改走 api.msedgeservices.com
         pct = int(round((speed - 1.0) * 100))
         rate = f"{pct:+d}%"
-        run([exe, "--voice", voice, "--text", text, "--rate", rate,
-             "--write-media", win(out_mp3)], timeout=120)
+        run([sys.executable, str(EDGE_HELPER), "--text", text, "--voice", voice,
+             "--rate", rate, "--out", win(out_mp3)], timeout=120)
     elif backend == "user":
         raise SkillError("user 后端不走合成，用 --user-audio <目录>")
     else:
@@ -125,7 +148,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="whiteboard-teacher-video 配音 → voice.js")
     ap.add_argument("project", help="项目目录（含 script.js）")
     ap.add_argument("--backend", default="apiz", choices=["apiz", "edge", "user"],
-                    help="TTS 后端（默认 apiz）")
+                    help="TTS 后端（默认 apiz；edge 免费，走 api.msedgeservices.com）")
     ap.add_argument("--voice", default=None, help="音色名 / apiz 预设名 / user 时的说明")
     ap.add_argument("--speed", type=float, default=DEFAULT_SPEED, help=f"语速倍数（默认 {DEFAULT_SPEED}）")
     ap.add_argument("--user-audio", default=None,

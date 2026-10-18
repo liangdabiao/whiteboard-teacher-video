@@ -181,9 +181,14 @@ def check_env() -> bool:
     apiz = shutil.which("apiz")
     print(f"    {'✓' if apiz else '⚠'} TTS 后端 apiz {'就绪' if apiz else '未安装（见 references/tts-backends.md）'}")
 
-    edge = shutil.which("edge-tts")
-    if edge:
-        print("    ⚠ 检测到 edge-tts，但微软已 403 封锁，先跑探针再用")
+    edge = subprocess.run(
+        [sys.executable, "-c", "import edge_tts; print(getattr(edge_tts, '__version__', '?'))"],
+        capture_output=True, text=True,
+    )
+    if edge.returncode == 0:
+        print(f"    ✓ TTS 后端 edge {edge.stdout.strip()}（新域名；--backend edge）")
+    else:
+        print("    ⚠ TTS 后端 edge 未安装（pip install edge-tts；不用 CLI 也能跑）")
 
     node = shutil.which("node")
     if node:

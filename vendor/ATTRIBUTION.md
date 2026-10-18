@@ -64,8 +64,8 @@ AGPL-3.0 是强 copyleft。**由于引擎是 AGPL，用本 skill 产出的视频
 
 ## 外部服务（不随 skill 分发）
 
-- **TTS 配音**：默认用 `apiz`（用户自行安装 CLI 并提供账号）→ **火山方舟 / ElevenLabs**（需自备 key）
-- **注意**：`edge-tts` 已被微软 403 封锁，skill 不再默认使用它
+- **TTS 配音**：默认用 `apiz`（用户自行安装 CLI 并提供账号）→ `edge`（免费，走 `api.msedgeservices.com`）→ 火山方舟 / ElevenLabs（需自备 key）
+- **注意**：`edge` 的旧域名 `speech.platform.bing.com` 在部分地区 403；helper 已改走新域名，仍属微软服务，使用前请自行确认条款
 
 ---
 

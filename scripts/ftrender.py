@@ -81,7 +81,9 @@ def probe(project: Path, film: Path) -> None:
     log = p.stderr or ""
     import re
     d = re.search(r"Duration:\s*(\d+):(\d+):([\d.]+)", log)
-    v = re.search(r"Video:\s*h264[^,]*,\s*(\d+)x(\d+)", log)
+    # 编码器会把 h264 写成 "h264 (High) (avc1 / …)"，逗号后面不一定是分辨率，
+    # 所以只认 Video 行里第一处 WxH（原来写死 h264,\s*WxH 会误判成"没有视频轨"）。
+    v = re.search(r"Video:.*?\b(\d{2,5})x(\d{2,5})\b", log)
     a = "Audio:" in log
     dur = f"{int(d.group(1)) * 60 + int(d.group(2))}m{d.group(3)}s" if d else "?"
     print(f"  校验：{dur} · {v.group(1)}x{v.group(2)}" if v else f"  校验：{dur}")
