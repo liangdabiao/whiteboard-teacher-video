@@ -1,6 +1,6 @@
 # TTS 后端
 
-`ftvoice.py` 的默认后端是 **apiz**。所有后端都走同一套「逐句合成 → 量真实时长 → 写 voice.js」的流程，切换只需一个参数。
+`ftvoice.py` 的默认后端是 **edge**（免费、无需 API key）。所有后端都走同一套「逐句合成 → 量真实时长 → 写 voice.js」的流程，切换只需一个参数。
 
 ## edge（免费 · 走新域名）
 
@@ -56,7 +56,7 @@ python -m edge_tts --list-voices | findstr zh-CN
 ### 失败时
 
 - 新域名 403：helper 会自动回退旧域名；
-- 两个都 403：说明当前网络/地区两条路都不通，换 `--backend apiz`；
+- 两个都 403：说明当前网络/地区两条路都不通，换 `--backend apiz`（付费但稳定）；
 - `ModuleNotFoundError: edge_tts`：`python -m pip install edge-tts`；
 - 音色报 `Invalid voice`：传完整 id（`zh-CN-XiaoxiaoNeural`），不要传中文显示名。
 
@@ -65,7 +65,7 @@ python -m edge_tts --list-voices | findstr zh-CN
 
 ---
 
-## apiz（默认 · 实测可用）
+## apiz（付费备选 · 实测可用）
 
 CLI 在 PATH 里（`~/.local/bin/apiz`），需要账户余额。
 
@@ -171,7 +171,7 @@ ffmpeg -i audio/p01-c00.wav -af "silenceremove=start_periods=1:start_duration=0.
 
 ```bash
 python scripts/ftvoice.py <项目> \
-  --backend apiz \        # apiz | edge | user（edge 免费，走新域名）
+  --backend edge \         # edge（默认，免费）| apiz（付费）| user（自备音频）
   --voice mature \        # 预设名或完整音色名（edge 见上面的映射）
   --speed 1.15 \          # 语速倍数（apiz 1.0-2.0；edge 自动转成百分比）
   --only p02 \            # 只配某一页

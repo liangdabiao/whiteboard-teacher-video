@@ -165,13 +165,15 @@ https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b554
 ### 5. 配音可选后端
 
 ```bash
-python scripts/ftvoice.py <项目> --backend apiz   --voice mature  # 默认：成熟女声
+python scripts/ftvoice.py <项目> --backend edge    --voice mature  # 默认：edge（免费）
+python scripts/ftvoice.py <项目> --backend apiz   --voice mature  # 付费备选
 python scripts/ftvoice.py <项目> --backend edge   --voice mature  # 免费：走新域名
 python scripts/ftvoice.py <项目> --backend user   --user-audio D:/my-audios
 python scripts/ftvoice.py <项目> --backend edge --probe          # 只测可用性
 ```
 
-> **edge 旧域名在部分地区 403**；skill 的 helper 已改走 `api.msedgeservices.com`。
+> **edge 免费可用**（2026-10-22 实测）：旧域名 `speech.platform.bing.com` 在部分地区 403，
+> 但 skill 的 helper 已改走 `api.msedgeservices.com` —— 同一个服务、同一套 token，无需 API key。
 > 不用 `edge-tts` CLI，`ftvoice.py --backend edge` 直接调 Python 包。详见 `references/tts-backends.md`。
 
 ---

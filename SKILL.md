@@ -1,6 +1,11 @@
 ---
 name: whiteboard-teacher-video
+version: 1.0.0
+display_name: 手绘讲解视频
+display_name_en: Whiteboard Teacher Video
 description: 图文讲解视频 skill：把知识讲解/科普/推导做成「手绘会动的画面」讲解视频——图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪（音画对齐）。五套风格可选（白板/黑板/书卷/暖色插画/科技深色），29 个现成组件（图表、流程、仪表、终端、3D），本地 Chrome 渲染、零生图 API 成本、任何改动秒级重渲。当用户要做知识讲解视频、概念科普、图解动画，或要求「手绘动画」「讲动画」「图文视频」「explainer」「animación」时使用。触发词：讲解视频、科普视频、图解视频、手绘动画、讲动画、逐笔绘制、图文并茂的视频、explainer video、whiteboard teacher。
+description_zh: 把讲解稿变成「手绘会动的画面」讲解视频。图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪，五套风格可选，本地 Chrome 渲染，零生图 API 成本，改动秒级重渲。适合知识讲解、概念科普、图解动画与课程视频。
+description_en: Turn a script into a whiteboard-style explainer video where every shape is drawn by code, word by word, exactly when it is spoken. Five visual styles, 29 built-in components, rendered locally in Chrome with zero image-generation API cost, and re-renders in seconds after any edit. Best for concept explainers, science communication, animated diagrams, and course videos.
 ---
 
 # Whiteboard Teacher Video · 图文讲解视频
@@ -44,7 +49,7 @@ description: 图文讲解视频 skill：把知识讲解/科普/推导做成「�
 
 ### 配音后端
 
-默认 `apiz`；想零成本就用 `edge`：
+默认 `edge`（免费、无需 API key）；付费备选用 `apiz`：
 
 ```bash
 python scripts/ftvoice.py <项目> --backend edge --voice mature --speed 1.15

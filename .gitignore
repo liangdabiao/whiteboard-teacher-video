@@ -13,6 +13,10 @@ audio/
 *.mp4
 *.srt
 
+# 本地成片库（课程集数等，几十上百 MB，不入库）
+output/
+example-output/
+
 # Python
 __pycache__/
 *.pyc

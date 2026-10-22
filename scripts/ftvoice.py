@@ -15,7 +15,7 @@
 
 用法
 ----
-  python ftvoice.py <项目目录> [--backend apiz|edge|user] [--voice NAME] [--speed 1.15]
+  python ftvoice.py <项目目录> [--backend edge|apiz|user] [--voice NAME] [--speed 1.15]
                      [--from 3] [--only p02] [--probe]
 """
 
@@ -86,7 +86,9 @@ def resolve_voice(backend: str, voice: str | None) -> str:
 def probe_backend(backend: str, voice: str) -> None:
     """发一句探针，提前发现后端不可用——绝不让 agent 跑完整流程才发现配音全废。
 
-    实测：edge-tts 已被微软 403 全域封锁（WSServerHandshakeError）。
+    edge：2026-10-22 实测可用 —— 旧域名 speech.platform.bing.com 在部分
+    地区 403，但 scripts/edge_tts_speak.py 已改走 api.msedgeservices.com，
+    同一个服务、同一套 token，免费且无需 API key。
     """
     # 每个进程用独立的探针文件：并发跑多集时共用 fttts-probe.mp3 会互相删文件，
     # 触发 WinError 32（另一个进程正在使用）。
@@ -110,7 +112,7 @@ def probe_backend(backend: str, voice: str) -> None:
         raise SkillError(
             f"✗ TTS 后端 {backend} 不可用：{e}\n\n"
             f"  换一个后端再试：\n"
-            f"    python {Path(__file__).name} <项目> --backend apiz\n"
+            f"    python {Path(__file__).name} <项目> --backend edge\n"
             f"    python {Path(__file__).name} <项目> --backend user --user-audio <目录>\n"
             f"  说明见 {SKILL / 'references' / 'tts-backends.md'}"
         ) from e
@@ -147,8 +149,9 @@ def synth_one(backend: str, text: str, voice: str, speed: float, out_mp3: Path) 
 def main() -> int:
     ap = argparse.ArgumentParser(description="whiteboard-teacher-video 配音 → voice.js")
     ap.add_argument("project", help="项目目录（含 script.js）")
-    ap.add_argument("--backend", default="apiz", choices=["apiz", "edge", "user"],
-                    help="TTS 后端（默认 apiz；edge 免费，走 api.msedgeservices.com）")
+    ap.add_argument("--backend", default="edge", choices=["apiz", "edge", "user"],
+                    help="TTS 后端（默认 edge：免费、无需 API key，走 api.msedgeservices.com；"
+                         "apiz 为付费备选）")
     ap.add_argument("--voice", default=None, help="音色名 / apiz 预设名 / user 时的说明")
     ap.add_argument("--speed", type=float, default=DEFAULT_SPEED, help=f"语速倍数（默认 {DEFAULT_SPEED}）")
     ap.add_argument("--user-audio", default=None,
