@@ -1,0 +1,46 @@
+{
+  "title": "一句话做一部连续剧",
+  "repo": "https://github.com/liangdabiao/Seedance2-Storyboard-Generator",
+  "tag": "Seedance 2.0",
+  "durationSec": 50,
+  "style": "whiteboard",
+  "source": "github_repos_over_3_stars.md 前 10 个仓库",
+  "pages": [
+    {
+      "id": "p01",
+      "section": "从故事到成片",
+      "title": "从故事到成片",
+      "say": "给你一个故事，工具能自动做成一部多集连续剧。靠的是三件套：Agent 写剧本，生图模型出素材，Seedance 出视频。"
+    },
+    {
+      "id": "p02",
+      "section": "三步出素材",
+      "title": "三步出素材",
+      "say": "先写四幕剧本，再把角色、场景、道具拆成编号的图。角色用 C 开头，场景用 S，道具用 P，编号能到九十九。"
+    },
+    {
+      "id": "p03",
+      "section": "时间轴分镜",
+      "title": "时间轴分镜",
+      "say": "每集十五秒，按秒切成五段。前三秒俯瞰建立场景，中间推进，最后三秒收尾。"
+    },
+    {
+      "id": "p04",
+      "section": "集与集怎么接",
+      "title": "集与集怎么接",
+      "say": "关键是每一集都接着上一集。上传上一集当参考，提示词开头写「延长十五秒」，就接上了。"
+    },
+    {
+      "id": "p05",
+      "section": "三条限制",
+      "title": "三条限制",
+      "say": "但限制也很硬：最多九张图，三个视频参考。提示词超过三百字，指令遵循就会开始飘。"
+    },
+    {
+      "id": "p06",
+      "section": "仓库地址",
+      "title": "仓库地址",
+      "say": "项目是开源的，地址在 GitHub 上，搜仓库名就能找到。"
+    }
+  ]
+}

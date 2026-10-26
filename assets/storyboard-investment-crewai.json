@@ -1,0 +1,46 @@
+{
+  "title": "四个 AI 角色开一次会",
+  "repo": "https://github.com/liangdabiao/easy_investment_Agent_crewai",
+  "tag": "A股多智能体",
+  "durationSec": 50,
+  "style": "whiteboard",
+  "source": "github_repos_over_3_stars.md 前 10 个仓库",
+  "pages": [
+    {
+      "id": "p01",
+      "section": "一个人干不完的活",
+      "title": "一个人干不完的活",
+      "say": "分析一只股票，要看技术面、财务、资金、情绪。一个人干不完，所以拆给四个 AI 角色。"
+    },
+    {
+      "id": "p02",
+      "section": "四个角色",
+      "title": "四个角色",
+      "say": "市场分析师看技术、政策、资金。财务报表专家看比率和同业，情绪研究员看资金流向，投资顾问负责汇总。"
+    },
+    {
+      "id": "p03",
+      "section": "三进一出",
+      "title": "三进一出",
+      "say": "三个分析型角色并行跑，结果汇总给投资顾问。这就是整个系统的形状：三进一出。"
+    },
+    {
+      "id": "p04",
+      "section": "换个股票只改一行",
+      "title": "换个股票只改一行",
+      "say": "换股票只改一个字典，三个字段。公司名、股票代码、市场，代码格式三种：上交所、深交所、港股。"
+    },
+    {
+      "id": "p05",
+      "section": "默认跑本地模型",
+      "title": "默认跑本地模型",
+      "say": "默认用本地 Ollama 跑 Llama 3.1。想换成 GPT-4，改一行就行。"
+    },
+    {
+      "id": "p06",
+      "section": "仓库地址",
+      "title": "仓库地址",
+      "say": "项目是开源的，地址在 GitHub 上，搜仓库名就能找到。"
+    }
+  ]
+}

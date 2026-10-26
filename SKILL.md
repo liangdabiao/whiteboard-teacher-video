@@ -3,7 +3,7 @@ name: whiteboard-teacher-video
 version: 1.0.0
 display_name: 手绘讲解视频
 display_name_en: Whiteboard Teacher Video
-description: 图文讲解视频 skill：把知识讲解/科普/推导做成「手绘会动的画面」讲解视频——图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪（音画对齐）。五套风格可选（白板/黑板/书卷/暖色插画/科技深色），29 个现成组件（图表、流程、仪表、终端、3D），本地 Chrome 渲染、零生图 API 成本、任何改动秒级重渲。当用户要做知识讲解视频、概念科普、图解动画，或要求「手绘动画」「讲动画」「图文视频」「explainer」「animación」时使用。触发词：讲解视频、科普视频、图解视频、手绘动画、讲动画、逐笔绘制、图文并茂的视频、explainer video、whiteboard teacher。
+description: 图文讲解视频 skill：把知识讲解/科普/推导/开源项目介绍做成「手绘会动的画面」讲解视频——图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪（音画对齐）。五套风格可选（白板/黑板/书卷/暖色插画/科技深色），29 个现成组件（图表、流程、仪表、终端、3D），本地 Chrome 渲染、零生图 API 成本、任何改动秒级重渲。当用户要做知识讲解视频、概念科普、图解动画、GitHub 项目介绍片，或要求「手绘动画」「讲动画」「图文视频」「explainer」「animación」时使用。触发词：讲解视频、科普视频、图解视频、手绘动画、讲动画、逐笔绘制、图文并茂的视频、项目介绍视频、开源项目介绍、skill 介绍片、GitHub 项目视频、explainer video、whiteboard teacher。
 description_zh: 把讲解稿变成「手绘会动的画面」讲解视频。图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪，五套风格可选，本地 Chrome 渲染，零生图 API 成本，改动秒级重渲。适合知识讲解、概念科普、图解动画与课程视频。
 description_en: Turn a script into a whiteboard-style explainer video where every shape is drawn by code, word by word, exactly when it is spoken. Five visual styles, 29 built-in components, rendered locally in Chrome with zero image-generation API cost, and re-renders in seconds after any edit. Best for concept explainers, science communication, animated diagrams, and course videos.
 ---
@@ -146,6 +146,11 @@ P.liveRough((lt, rough) => [rough.box(x, y, w, h, { color: 'ink' })]);  // ✓
 
 **能**：知识科普、概念解释、流程推导、数据图表讲解、产品演示（可嵌真实截图）、GitHub 项目讲解；五套风格；横屏/竖屏；中英配音；自动字幕；20 秒到 10 分钟。
 
+> **做 GitHub 项目 / skill 介绍片时，先读 `references/github-project-intro.md`。**
+> 这类片子有硬要求：**最后一页必须是仓库地址页**（仓库名大字 + 完整 URL + owner + 怎么找），
+> 否则观众看完不知道项目叫什么、去哪找 —— 片子等于白做。仓库名要从原文原样复制，
+> **不能按文件名 slug 推断**（实测 `ai-data-hub.md` 的仓库其实是 `AI_data_hub`）。
+
 **不能**：
 - 写实照片/三维实拍风格（要那种质感请用生图工具）
 - 自动配乐与音效床（`page.sfx` 能做，但要自己准备音频文件）
@@ -168,6 +173,8 @@ P.liveRough((lt, rough) => [rough.box(x, y, w, h, { color: 'ink' })]);  // ✓
 
 | 什么时候读 | 读哪份 |
 |---|---|
+| **做开源项目 / skill 介绍片** | `references/github-project-intro.md`（**8 页骨架 + 仓库地址页铁律 + 十七个坑**）· 样例 `assets/example-github-intro/` |
+| **批量做一批项目介绍片** | 先跑 `python scripts/progress.py` 生成进度表（哪些做完 / 待做 / 缺仓库地址） |
 | **第一次用** | `assets/example-relativity/`（一条真实成片的完整源码：8 页，看完就懂） |
 | 画任何一页之前 | `references/page-api.md`（绘图 API 速查 + 三个高频坑） |
 | 定分镜 / 写口播 | `references/storyboard-method.md`（五段式 + 禁忌） |

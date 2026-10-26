@@ -1,0 +1,46 @@
+{
+  "title": "AI 客服敢动手，要过两道闸",
+  "repo": "https://github.com/liangdabiao/langgraph_multi-agent-rag-customer-support",
+  "tag": "多智能体客服",
+  "durationSec": 50,
+  "style": "whiteboard",
+  "source": "github_repos_over_3_stars.md 前 10 个仓库",
+  "pages": [
+    {
+      "id": "p01",
+      "section": "会动手的 AI 客服",
+      "title": "会动手的 AI 客服",
+      "say": "普通 AI 客服只会聊天。这个系统的助手，能真的去订机票、租车、订酒店。"
+    },
+    {
+      "id": "p02",
+      "section": "七个专业助手",
+      "title": "七个专业助手",
+      "say": "主助手收到问题后，用条件边路由给七个专业助手。航班、租车、酒店、行程、订单、表单、博客搜索。"
+    },
+    {
+      "id": "p03",
+      "section": "工具分两类",
+      "title": "工具分两类",
+      "say": "每个助手能用的工具分两类。安全工具直接用，敏感工具必须先问用户。"
+    },
+    {
+      "id": "p04",
+      "section": "还要管理员批",
+      "title": "还要管理员批",
+      "say": "但用户点了确认还不够。请求会发到飞书，管理员批准，操作才真正执行。"
+    },
+    {
+      "id": "p05",
+      "section": "入口还有一道",
+      "title": "入口还有一道",
+      "say": "入口处还有个 AI 安全员。它只看用户最新那句话，判断是不是越狱攻击。"
+    },
+    {
+      "id": "p06",
+      "section": "仓库地址",
+      "title": "仓库地址",
+      "say": "项目是开源的，地址在 GitHub 上，搜仓库名就能找到。"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "title": "二十八个 AI 跑一份尽调",
+  "repo": "https://github.com/liangdabiao/Claude-Code-Stock-Deep-Research-Agent",
+  "tag": "Deep Research",
+  "durationSec": 50,
+  "style": "whiteboard",
+  "source": "github_repos_over_3_stars.md 前 10 个仓库",
+  "pages": [
+    {
+      "id": "p01",
+      "section": "先问你四个问题",
+      "title": "先问你四个问题",
+      "say": "做尽调之前，它先问你四个问题。投资风格、持有周期、关注重点、风险偏好。"
+    },
+    {
+      "id": "p02",
+      "section": "然后扇出",
+      "title": "然后扇出",
+      "say": "问完就编译成研究提示词，然后并行扇出。七个阶段各派四个 AI，合计二十八个。"
+    },
+    {
+      "id": "p03",
+      "section": "每条事实都要有出处",
+      "title": "每条事实都要有出处",
+      "say": "产出的每条事实，都要带作者、日期、标题、链接。来源还分等级，年报监管文件是 A 级。"
+    },
+    {
+      "id": "p04",
+      "section": "强制交叉验证",
+      "title": "强制交叉验证",
+      "say": "交叉验证是强制项，不是建议。利润要和现金流对，公司要和同业对，反方观点必须找三到五个风险。"
+    },
+    {
+      "id": "p05",
+      "section": "真实代价",
+      "title": "真实代价",
+      "say": "代价是时间：跑一次要两到四个小时。但换来的是二十个文件、一百二十七条来源、五十多页报告。"
+    },
+    {
+      "id": "p06",
+      "section": "仓库地址",
+      "title": "仓库地址",
+      "say": "项目是开源的，地址在 GitHub 上，搜仓库名就能找到。"
+    }
+  ]
+}
