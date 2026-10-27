@@ -4,9 +4,17 @@
 
 图形由代码逐笔绘出、文字逐字写出、讲到哪画到哪。五套风格可选，本地 Chrome 渲染，**零生图 API 成本**，任何改动秒级重渲。
 
-B站效果：https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
+B站效果：
+
+《GPS是怎么工作的》
+
+https://www.bilibili.com/video/BV1mpn96UE7B/?vd_source=86926e418c83af75f6850b5546388a79
+
+https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
 
 安装方法，直接给链接给你的ai就可以。 本项目不需要依赖其他api；edge-tts 已改走新域名（见 `references/tts-backends.md`），也可以装 https://apiz.ai 的 apiz-cli 作为备用语音后端。
+
+如果需要更简洁的版本： https://github.com/liangdabiao/whiteboard-explainer
 
 ---
 
