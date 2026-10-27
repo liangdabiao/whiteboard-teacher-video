@@ -10,7 +10,11 @@ B站效果：
 
 https://www.bilibili.com/video/BV1mpn96UE7B/?vd_source=86926e418c83af75f6850b5546388a79
 
+《勾股定理证明》
 https://www.bilibili.com/video/BV1yYJ46PE5R/?vd_source=86926e418c83af75f6850b5546388a79
+
+《九宫格数学》
+https://www.bilibili.com/video/BV1SFxg6VEZP/?vd_source=86926e418c83af75f6850b5546388a79
 
 安装方法，直接给链接给你的ai就可以。 本项目不需要依赖其他api；edge-tts 已改走新域名（见 `references/tts-backends.md`），也可以装 https://apiz.ai 的 apiz-cli 作为备用语音后端。
 
