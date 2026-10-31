@@ -81,6 +81,8 @@ git -C frametell checkout
 
 ### 对照：上游 frametell 原版要 1.3GB
 
+https://github.com/sitor-ai/frametell  , frametell 是优秀的项目，推荐给大家！ 而本项目利用了frametell的绘图引擎！
+
 | | 上游 monorepo | 本 skill |
 |---|---|---|
 | 依赖包数 | 590 个 | **10 个** |
