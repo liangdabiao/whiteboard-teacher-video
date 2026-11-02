@@ -1,6 +1,7 @@
 # whiteboard-teacher-video
 
-![Uploading img-20261019085501-1536x864.webp…]()
+
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/25f8ce97-1407-4167-a53a-4149c195a6a8" />
 
 
 **图文讲解视频 skill** —— 把讲解稿变成「手绘会动的画面」讲解视频。
