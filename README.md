@@ -28,6 +28,8 @@ https://www.bilibili.com/video/BV1nHxY6tEwe/?vd_source=86926e418c83af75f6850b554
 
 安装方法，直接给链接给你的ai就可以。 本项目不需要依赖其他api；edge-tts 已改走新域名（见 `references/tts-backends.md`），也可以装 https://apiz.ai 的 apiz-cli 作为备用语音后端。
 
+重大升级版（利用了最新的动效绘图技术）： https://github.com/liangdabiao/whiteboard-teacher-video-motion
+
 如果需要更简洁的版本： https://github.com/liangdabiao/whiteboard-explainer
 
 ---
